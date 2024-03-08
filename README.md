@@ -28,9 +28,6 @@ ou
 ```bash
 node ds/app.js
 ```
-<<<<<<< HEAD
-### Doc
-=======
 ### Doc
 
 #### Session
