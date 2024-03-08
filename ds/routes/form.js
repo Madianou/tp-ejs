@@ -25,6 +25,7 @@ router.post('/form', (req, res, next) => {
 
     const mensualite = (req.body.capital*(1+req.body.taux/100))/mois;
 
+    console.log(mensualite);
     req.session.message.push({ message: [req.body.capital,req.body.taux,mois,mensualite]});
     res.redirect('/form');
 });
