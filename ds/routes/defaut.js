@@ -5,7 +5,6 @@ const router = express.Router();
 const accessMessage = require('./form');
 
 router.get('/', (req, res, next) => {
-    console.log("acces message : ", accessMessage.message);
     if (accessMessage.message) {
         const lemessage = accessMessage.message;
         if (lemessage.length > 0) {
