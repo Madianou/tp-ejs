@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/form', (req, res, next) => {
     if(req.session.isLogin) {
-        res.render(path.join(__dirname, "..", "views", "form.ejs"), {pageTitle: "page form", message : req.session.mensualités, connect: "connecté"});
+        res.render(path.join(__dirname, "..", "views", "form.ejs"), {pageTitle: "page emprunt", message : req.session.mensualités, connect: "connecté"});
     }
     else {
         res.redirect('/')
