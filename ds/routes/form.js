@@ -6,7 +6,7 @@ const message = [];
 
 router.get('/form', (req, res, next) => {
     if(req.session.isLogin) {
-        res.render(path.join(__dirname, "..", "views", "form.ejs"), {pageTitle: "page form", message : message, connect: "connecté"});
+        res.render(path.join(__dirname, "..", "views", "form.ejs"), {pageTitle: "page form", message : req.session.message, connect: "connecté"});
     }
     else {
         res.redirect('/')
@@ -34,9 +34,8 @@ router.post('/form', (req, res, next) => {
     console.log(mensualite);
 
 
-    message.push({ message: [req.body.capital,req.body.taux,mois,mensualite]});
+    req.session.message.push({ message: [req.body.capital,req.body.taux,mois,mensualite]});
     res.redirect('/form');
 });
 
 exports.routes = router;
-exports.message = message;

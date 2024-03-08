@@ -4,6 +4,7 @@ const router = express.Router();
 
 const login_form = [];
 const passwd_form = [];
+const message = [];
 
 router.get('/login', (req, res, next) => {
     res.render(path.join(__dirname,"..","views","login.ejs"), {pageTitle: "Connexion",connect : "non connecté"});
@@ -15,6 +16,7 @@ router.post('/login', (req, res, next) => {
     console.log("login = "+param1+" mdp = "+param2);
     if (param1 == "user" && param2 == "user"){
         req.session.isLogin = true;
+        req.session.message = message;
         res.redirect('/');
     }
     else{

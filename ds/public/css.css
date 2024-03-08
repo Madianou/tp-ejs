@@ -41,7 +41,8 @@ main{
 a,
 .main-container form input[type="text"]::placeholder,
 .main-container form input[type="password"]::placeholder,
-.main-container form input[type="text"]{
+.main-container form input[type="text"],
+.main-container form input[type="password"]{
     color: #cfd7d2;
 }
 
