@@ -1,0 +1,19 @@
+<%- include('layout/debut.ejs')%>
+</head>
+
+<body>
+<header>
+    <%- include('layout/navigation.ejs')%>
+</header>
+<main>
+    <div class="main-container">
+        <div class="login-container">
+            <form action='/login' method='post'>
+                <input type='text' name='username' placeholder='username'>
+                <input type='password' name='password' placeholder='password'>
+                <button type='submit'>Se connecter</button>
+            </form>
+        </div>
+    </div>
+</main>
+<%- include('layout/fin.ejs')%>

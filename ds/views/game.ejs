@@ -1,0 +1,26 @@
+<%- include('layout/debut.ejs')%>
+    <script src="events.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+
+<body>
+<header>
+    <%- include('layout/navigation.ejs')%>
+</header>
+<main>
+
+    <div class="main-score">
+        <h1>0 pts</h1>
+    </div>
+
+    <div class="main-time">
+        <h2 id="countdown"></h2>
+    </div>
+
+    <div class="main-target">
+        <span class="material-symbols-outlined">target</span>
+    </div>
+
+    </div>
+</main>
+<%- include('layout/fin.ejs')%>
