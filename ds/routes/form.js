@@ -5,7 +5,10 @@ const router = express.Router();
 const message = [];
 
 router.get('/form', (req, res, next) => {
-    res.render(path.join(__dirname,"..","views","form.ejs"),{pageTitle: "page form"});
+    if(req.session.isLogin) {
+        res.render(path.join(__dirname, "..", "views", "form.ejs"), {pageTitle: "page form", connect: "connecté"});
+    }
+    res.redirect('/')
 
 });
 

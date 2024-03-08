@@ -3,7 +3,11 @@
         <li><a href="/">Accueil</a></li>
         <li><a href="/form">Emprunt</a></li>
         <li><a href="/game">Game</a></li>
+        <% if(connect=="connecté"){%>
+            <li><a href="/logout">Logout</a></li>
+        <%}
+        else{%>
         <li><a href="/login">Login</a></li>
-        <li><a href="/logout">Deco</a></li>
+        <%}%>
     </ul>
 </nav>
