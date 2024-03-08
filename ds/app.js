@@ -28,7 +28,12 @@ app.use(defautRoutes);
 app.use(game);
 
 app.use((req,res,next)=>{
-    res.status(404).render(path.join(__dirname,"views","404.ejs"), {pageTitle: "404 not Found"});
+    if(req.session.isLogin) {
+        res.status(404).render(path.join(__dirname, "views", "404.ejs"), {pageTitle: "404 not Found", connect : "connecté"});
+    }
+    else{
+        res.status(404).render(path.join(__dirname, "views", "404.ejs"), {pageTitle: "404 not Found", connect : "non connecté"});
+    }
 });
 
 app.listen(port);
