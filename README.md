@@ -98,7 +98,56 @@ exports.routes = router;
 ```
 
 
+#### Calcul d'emprunts
+
+```javascript
+router.post('/form', (req, res, next) => {
+    console.log(Object.assign({},req.body));
+
+    if (req.body.mois == ""){
+        var mois = 12;
+    }
+    else{
+        var mois = req.body.mois;
+    }
+
+    const mensualite = (req.body.capital*(1+req.body.taux/100))/mois;
+    
+    req.session.message.push({ message: [req.body.capital,req.body.taux,mois,mensualite]});
+    res.redirect('/form');
+});
+```
+
+Ici, le calcul d'emprunt se fait dans le middleware form.js. L'utilisateur entre 3 données pour effectuer son calcul de mensualité.
+On retrouve :
+- le capital
+- le taux
+- le nombre de mois
+
+Pour calculer la mensualité, on utilise la formule suivant :
+
+![img.png](img.png)
+
+Le calcul se fait directement dans la variable mensualité.
+Cette même variable est ajoutée dans un tableau _message_ qui est dans la session de l'utilisateur. Comme dit dans la partie session, l'objectif, ici, est de vider
+le contenu du tableau message lors de la déconnexion.
+
+Après avoir obtenu notre résultat, l'utilisateur est renvoyé de nouveau vers la page emprunt avec cette fois ci la liste des calcul effectués.
+
+L'affichage se fait sous forme de table avec la structure :
+
+| Capital   |  Taux  | Mois | Mensualité |
+|-----------|:------:|-----:|-----------:|
+| capital 1 | taux 1 |    n |      XXX e |
+| capital 2 | taux 2 |    n |      XXX e |
+| capital 3 | taux 3 |    n |      XXX e |
 
 
 
->>>>>>> 531e259a4f6d67d17309c67e835b05fad69d9330
+#### Bonus
+
+Rendez-vous sur la page jeu et franchissez les paliers suivant :
+- Facile : 10 pts
+- Moyen : 15 pts
+- Difficile : 20 pts
+- Impossible : 30 pts
