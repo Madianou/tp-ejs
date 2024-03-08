@@ -13,7 +13,6 @@ window.onload = function () {
             clearInterval(downloadTimer);
             document.getElementById("countdown").innerHTML = "Finished";
             alert("Temps écoulé !")
-            alert(flag);
             flag = false;
 
         } else {
