@@ -6,7 +6,7 @@ const login_form = [];
 const passwd_form = [];
 
 router.get('/login', (req, res, next) => {
-    res.render(path.join(__dirname,"..","views","login.ejs"), {pageTitle: "Connexion"});
+    res.render(path.join(__dirname,"..","views","login.ejs"), {pageTitle: "Connexion",connect : "non connecté"});
 });
 
 router.post('/login', (req, res, next) => {
