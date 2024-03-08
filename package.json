@@ -7,6 +7,6 @@
     "express-session": "^1.18.0"
   },
   "scripts": {
-    "start": "node app.js"
+    "start": "node ds/app.js"
   }
 }
