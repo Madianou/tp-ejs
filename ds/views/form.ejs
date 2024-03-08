@@ -9,13 +9,16 @@
 </header>
 <main>
     <div class="main-container">
-        <h1>Formulaire</h1>
+        <h1>Formulaire d'emprunt</h1>
 
         <div class="form-container">
             <form action='/form' method='post'>
-                <input type='text' name='message' placeholder='message'>
-                <button type='submit'>GO</button>
+                <input type='number' name='capital' placeholder='capital'>
+                <input type='number' name='taux' placeholder='taux'>
+                <input type='number' name='annees' placeholder='annees'>
+                <input type='number' name='mois' placeholder='mois'>
 
+                <button type='submit'>Calculer</button>
             </form>
         </div>
 
