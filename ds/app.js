@@ -7,6 +7,7 @@ const app = express();
 const defautRoutes = require('./routes/defaut');
 const formRoutes = require('./routes/form');
 const loginRoutes = require('./routes/login');
+const logOutRoutes = require('./routes/logout');
 const game = require('./routes/game');
 const session = require('express-session');
 
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname,'public')));
 
 app.use(formRoutes.routes);
 app.use(loginRoutes.routes);
+app.use(logOutRoutes.routes);
 app.use(defautRoutes);
 app.use(game);
 
