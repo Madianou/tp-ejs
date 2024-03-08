@@ -2,11 +2,10 @@ const path = require('path');
 const express = require('express');
 const router = express.Router();
 
-const message = [];
 
 router.get('/form', (req, res, next) => {
     if(req.session.isLogin) {
-        res.render(path.join(__dirname, "..", "views", "form.ejs"), {pageTitle: "page form", message : req.session.message, connect: "connecté"});
+        res.render(path.join(__dirname, "..", "views", "form.ejs"), {pageTitle: "page emprunt", message : req.session.mensualités, connect: "connecté"});
     }
     else {
         res.redirect('/')
@@ -25,8 +24,8 @@ router.post('/form', (req, res, next) => {
 
     const mensualite = (req.body.capital*(1+req.body.taux/100))/mois;
 
-    console.log(mensualite);
-    req.session.message.push({ message: [req.body.capital,req.body.taux,mois,mensualite]});
+    req.session.mensualités.push({ message: [req.body.capital,req.body.taux,mois,mensualite]});
+
     res.redirect('/form');
 });
 
