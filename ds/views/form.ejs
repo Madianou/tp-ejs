@@ -21,6 +21,29 @@
             </form>
         </div>
 
+        <div class="table-container">
+            <% if (message.length > 0){ %>
+                <h2>Résultat des calcul d'emprunt</h2>
+                <table>
+                    <tr>
+                        <th>Capital</th>
+                        <th>Taux</th>
+                        <th>Mois</th>
+                        <th>Résultat mensuel</th>
+                    </tr>
+                    <% for (let elt of message){ %>
+                        <tr>
+                            <td><%= elt.message[0] %></td>
+                            <td><%= elt.message[1] %></td>
+                            <td><%= elt.message[2] %></td>
+                            <td><%= elt.message[3] %></td>
+                        </tr>
+                    <% } %>
+                </table>
+
+            <%}%>
+        </div>
+
     </div>
 </main>
 <%- include('layout/fin.ejs')%>

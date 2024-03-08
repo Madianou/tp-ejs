@@ -9,15 +9,6 @@
     <div class="main-container">
         <h1>Page d'accueil</h1>
         <p>Bonjour vous voici sur la page d'accueil</p>
-        <% if (message.length > 0){ %>
-        <ul>
-            <% for (let elt of message){ %>
-                <li><%= elt.message %></li>
-            <% } %>
-        </ul>
-        <%} else {%>
-        <p>Il n'y a pas de message</p>
-        <% } %>
 
         <p id="session"><%=connect%></p>
 
