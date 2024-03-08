@@ -15,10 +15,11 @@ router.post('/login', (req, res, next) => {
     console.log("login = "+param1+" mdp = "+param2);
     if (param1 == "user" && param2 == "user"){
         req.session.isLogin = true;
-        res.setHeader('set-Cookie', 'login:'+req.body.username);
         res.redirect('/');
     }
-    res.redirect('/login');
+    else{
+        res.redirect('/login');
+    }
 
 });
 

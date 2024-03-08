@@ -8,7 +8,9 @@ router.get('/game',(req, res, next)=>{
         console.log("middleware : game");
         res.render(path.join(__dirname, '../', 'views', 'game.ejs'), {pageTitle: "page game",connect : "connecté"});
     }
-    res.redirect('/');
+    else {
+        res.redirect('/');
+    }
 })
 
 module.exports = router;

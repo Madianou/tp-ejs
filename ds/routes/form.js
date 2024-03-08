@@ -8,8 +8,9 @@ router.get('/form', (req, res, next) => {
     if(req.session.isLogin) {
         res.render(path.join(__dirname, "..", "views", "form.ejs"), {pageTitle: "page form", message : message, connect: "connecté"});
     }
-    res.redirect('/')
-
+    else {
+        res.redirect('/')
+    }
 });
 
 router.post('/form', (req, res, next) => {
