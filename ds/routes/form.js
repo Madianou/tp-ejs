@@ -15,6 +15,8 @@ router.get('/form', (req, res, next) => {
 router.post('/form', (req, res, next) => {
     console.log(Object.assign({},req.body));
 
+    var mensualite = 0;
+
     if (req.body.mois == ""){
         var mois = 12;
     }
@@ -22,8 +24,14 @@ router.post('/form', (req, res, next) => {
         var mois = req.body.mois;
     }
 
-    const mensualite = (req.body.capital*(1+req.body.taux/100))/mois;
 
+    if(Boolean(req.body.credit)){
+        var r = (req.body.taux/mois)/100;
+        mensualite = (req.body.capital*r*(Math.pow(1+r,mois)))/(Math.pow(1+r,mois)-1)
+    }
+    else{
+        mensualite = (req.body.capital*(1+req.body.taux/100))/mois;
+    }
     req.session.mensualités.push({ message: [req.body.capital,req.body.taux,mois,mensualite]});
 
     res.redirect('/form');
