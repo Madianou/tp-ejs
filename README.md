@@ -100,6 +100,7 @@ exports.routes = router;
 ```javascript
 router.post('/form', (req, res, next) => {
     console.log(Object.assign({},req.body));
+    var mensualite = 0;
 
     if (req.body.mois == ""){
         var mois = 12;
@@ -108,9 +109,16 @@ router.post('/form', (req, res, next) => {
         var mois = req.body.mois;
     }
 
-    const mensualite = (req.body.capital*(1+req.body.taux/100))/mois;
-    
-    req.session.message.push({ message: [req.body.capital,req.body.taux,mois,mensualite]});
+
+    if(Boolean(req.body.credit)){
+        var r = (req.body.taux/mois)/100;
+        mensualite = (req.body.capital*r*(Math.pow(1+r,mois)))/(Math.pow(1+r,mois)-1)
+    }
+    else{
+        mensualite = (req.body.capital*(1+req.body.taux/100))/mois;
+    }
+    req.session.mensualités.push({ message: [req.body.capital,req.body.taux,mois,mensualite]});
+
     res.redirect('/form');
 });
 ```
@@ -121,9 +129,17 @@ On retrouve :
 - le taux
 - le nombre de mois
 
-Pour calculer la mensualité, on utilise la formule suivant :
+Pour calculer la mensualité, on utilise la formule suivante :
 
-![img.png](img.png)
+![img.png](img.png) 
+
+ou une seconde formule qui calcule l'interet mensuel et qui utilise la formule d'ammortissement : 
+
+
+![alt text](formule_ammortissement.png) 
+
+r correspond aux taux d'intéret mensuel et est calculé en fonction du taux d'intérêt annuel et du nombre de mois de paiements.
+
 
 Le calcul se fait directement dans la variable mensualité.
 Cette même variable est ajoutée dans un tableau _message_ qui est dans la session de l'utilisateur. Comme dit dans la partie session, l'objectif, ici, est de vider
