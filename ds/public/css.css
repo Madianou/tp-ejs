@@ -207,6 +207,12 @@ nav ul{
     background-color: #84967f;
 }
 
+.footer-container{
+  
+  bottom: 0px;
+  position: fixed;
+  margin-left: 10px;
+}
 
 input:where(.chip[type="checkbox"]) {
     --color: #6c6;
